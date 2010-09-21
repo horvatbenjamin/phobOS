@@ -1,1 +1,8 @@
+## 2010.09.21 ##
+
+Some code cleanup
+Implemented C functions: memcpy, memset, memsetw, strlen, inportb, outportb
+Improved screen "driver" :)
+
+
 ## first version: 2010.09.20 ##

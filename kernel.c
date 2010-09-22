@@ -11,7 +11,7 @@ void kmain( void* mbd, unsigned int magic )
    char * boot_loader_name =(char*) ((long*)mbd)[16];
  
    // Print a letter to screen to see everything is working:
-   char txt[]="Hello World!!!\nMasodik sor\nHarmadik...\0";
+   char txt[]="Hello World!!!\nMasodik sor\nHarmadik...";
    char *ptr_txt=&txt[0];
    init_video();
    puts(ptr_txt);

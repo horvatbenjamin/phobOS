@@ -1,9 +1,9 @@
 #include "screen.h"
 
-//FIXME: Nem en irtam, csak modositottam... Majd ezt is lehet hogy ujra kell irni, de hogy haladjak, jo lesz ez egyelore...
+//FIXME: OK, atneztem, ertheto a kod...
 
 unsigned short *textmemptr;
-int attrib= 0x0F;
+int attrib= 0x0F;	//text color 15 - White
 int csr_x=0,csr_y=0;
 
 void scroll(void){
@@ -16,13 +16,10 @@ void scroll(void){
 	};
 };
 
-//XXX:!! ezt meg meg kell erteni!! //
 void move_csr(void){
     unsigned temp;
 
-    /* The equation for finding the index in a linear
-    *  chunk of memory can be represented by:
-    *  Index = [(y * width) + x] */
+    //Index = [(y * width) + x]
     temp = csr_y * 80 + csr_x;
 
     /* This sends a command to indicies 14 and 15 in the
@@ -42,13 +39,10 @@ void cls(){
     unsigned blank;
     int i;
 
-    /* Again, we need the 'short' that will be used to
-    *  represent a space with color */
-    blank = 0x20 | (attrib << 8);
+    blank = 0x20 | (attrib << 8);	//Blank character with black background
 
-    /* Sets the entire screen to spaces in our current
-    *  color */
-    for(i = 0; i < 25; i++)
+    // Clear entire screen
+	for(i = 0; i < 25; i++)
         memsetw (textmemptr + i * 80, blank, 80);
 
     /* Update out virtual cursor, and then move the
@@ -59,7 +53,7 @@ void cls(){
 }
 
 /* Puts a single character on the screen */
-void putch(unsigned char c){
+void putch(const char c){
     unsigned short *where;
     unsigned att = attrib << 8;
 
@@ -113,7 +107,7 @@ void putch(unsigned char c){
 }
 
 /* Uses the above routine to output a string... */
-void puts(unsigned char *text){
+void puts(char *text){
     int i;
 
     for (i = 0; i < strlen(text); i++)

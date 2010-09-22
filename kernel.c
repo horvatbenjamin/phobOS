@@ -13,6 +13,7 @@ void kmain( void* mbd, unsigned int magic )
    // Print a letter to screen to see everything is working:
    char txt[]="Hello World!!!\nMasodik sor\nHarmadik...";
    char *ptr_txt=&txt[0];
+   gdt_install();
    init_video();
    puts(ptr_txt);
 } 

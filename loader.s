@@ -46,6 +46,16 @@ flush2:
     ret
 
 ; END: Code for GDT
+
+; Code for IDT
+global idt_set
+extern idtable_ptr
+idt_set:
+    lidt [idtable_ptr]
+    ret
+
+;END: code for idt
+
 section .bss
 align 4
 stack:

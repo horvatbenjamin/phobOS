@@ -1,3 +1,7 @@
+## 2010.09.23 ##
+Implemented IDT
+
+
 ## 2010.09.22 ##
 Implemented GDT
 CPU in protected mode
@@ -5,10 +9,10 @@ CPU in protected mode
 
 
 ## 2010.09.21 ##
-
 Some code cleanup
 Implemented C functions: memcpy, memset, memsetw, strlen, inportb, outportb
 Improved screen "driver" :)
 
 
-## first version: 2010.09.20 ##
+## 2010.09.20 ##
+First version

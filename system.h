@@ -12,5 +12,9 @@ void outportb (unsigned short _port, unsigned char _data);
 
 		/* gdt.c */
 void gdt_install();
+
+		/* idt.c */
+void idt_install();
+
 #endif
 	

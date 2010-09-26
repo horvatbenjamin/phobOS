@@ -16,7 +16,7 @@ MultiBootHeader:
    dd CHECKSUM
  
 ; reserve initial kernel stack space
-STACKSIZE equ 0x4000                  ; that's 16k.
+STACKSIZE equ 0x8000                  ; that's 32k.
  
 loader:
    mov esp, stack+STACKSIZE           ; set up the stack
@@ -35,6 +35,9 @@ global gdt_set
 extern gdtable_ptr
 gdt_set:
     lgdt [gdtable_ptr]        ; Load the GDT
+;	mov eax, cr0
+;	or al,1
+;	mov cr0,eax
     mov ax, 0x10			; 0x10 is the offset in the GDT to our data segment
     mov ds, ax
     mov es, ax
@@ -55,6 +58,50 @@ idt_set:
     ret
 
 ;END: code for idt
+
+;CPU Exeption handlers
+
+global isr0
+global isr_unhandled
+
+isr0:
+	cli
+	push byte 0 ;dummy errorcode
+	push byte 0 ;exeption code
+	jmp _isr_common
+
+isr_unhandled:
+	cli
+	push byte 127
+	push byte 127
+	jmp _isr_common
+
+extern fault_handler
+
+_isr_common:
+	pusha
+	push ds
+	push es
+	push fs
+	push gs
+	mov ax,0x10 ;kernel Data Segment
+	mov ds,ax
+	mov es,ax
+	mov fs,ax
+	mov gs,ax
+	mov eax,esp
+	push eax
+	mov eax,fault_handler
+	call eax	;call C fault_handler
+	pop eax
+	pop gs
+	pop fs
+	pop es
+	pop ds
+	popa
+	add esp,8	;purge error code and exeption code
+	iret
+;END: CPU Exeption handlers
 
 section .bss
 align 4

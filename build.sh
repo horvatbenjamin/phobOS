@@ -8,5 +8,5 @@ gcc -m32 -o system.o -c system.c -Wextra -Werror -nostdlib -nostartfiles -nodefa
 gcc -m32 -o screen.o -c screen.c -Wextra -Werror -nostdlib -nostartfiles -nodefaultlibs -fno-builtin -ggdb
 gcc -m32 -o gdt.o -c gdt.c -Wextra -Werror -nostdlib -nostartfiles -nodefaultlibs -fno-builtin -ggdb
 gcc -m32 -o idt.o -c idt.c -Wextra -Werror -nostdlib -nostartfiles -nodefaultlibs -fno-builtin -ggdb
-
-ld -melf_i386  -T linker.ld -o kernel.bin loader.o kernel.o system.o screen.o gdt.o idt.o
+gcc -m32 -o isrs.o -c isrs.c -Wextra -Werror -nostdlib -nostartfiles -nodefaultlibs -fno-builtin -ggdb
+ld -melf_i386  -T linker.ld -o kernel.bin loader.o kernel.o system.o screen.o gdt.o idt.o isrs.o

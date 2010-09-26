@@ -13,8 +13,14 @@ void kmain( void* mbd, unsigned int magic )
    // Print a letter to screen to see everything is working:
    char txt[]="Hello World!!!\nMasodik sor\nHarmadik...";
    char *ptr_txt=&txt[0];
+   int a=1,b=0;;
    gdt_install();
    idt_install();
+   isrs_install();
+//   idt_install();
    init_video();
    puts(ptr_txt);
+//   puts("\n");
+//   _IDT_DEBUG_();
+//   a/=b;
 } 

@@ -21,6 +21,6 @@ void kmain( void* mbd, unsigned int magic )
    init_video();
    puts(ptr_txt);
 //   puts("\n");
-//   _IDT_DEBUG_();
-//   a/=b;
+   _IDT_DEBUG_();
+   a/=b;
 } 

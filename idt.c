@@ -43,5 +43,22 @@ void idt_install(){
 
 void _IDT_DEBUG_(){
 	unsigned int x=0;
-	for(x=0;x<255*sizeof(struct idt_entry);x++)putch((char)*(char*)(idtable+x));
+	unsigned char *ptrtmp=(char*)&idtable;
+	unsigned char tmp1,tmp2;
+//	for(x=0;x<1*sizeof(struct idt_entry);x++)puts(*ptrtmp++); //putch((char)*(char*)(idtable+x));
+//	//puts(idtable);
+	puts("\n\n   -=Simple memory dumper=-\n");
+	puts("------------------------------\n");
+	for(x=1;x<=10*sizeof(struct idt_entry);x++){
+		tmp1=*(ptrtmp)/16;
+		tmp2=*(ptrtmp)%16;
+		if(tmp1<10){tmp1+='0';}else{tmp1+='A'-10;};
+		if(tmp2<10){tmp2+='0';}else{tmp2+='A'-10;};
+		putch(tmp1);
+		putch(tmp2);
+		putch(' ');
+		if(x!=0 && x%sizeof(struct idt_entry)==0)putch('\n');
+		ptrtmp++;
+	};
+	puts("\n");
 }

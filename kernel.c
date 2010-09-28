@@ -17,10 +17,8 @@ void kmain( void* mbd, unsigned int magic )
    gdt_install();
    idt_install();
    isrs_install();
-//   idt_install();
    init_video();
    puts(ptr_txt);
-//   puts("\n");
    _IDT_DEBUG_();
    a/=b;
 } 

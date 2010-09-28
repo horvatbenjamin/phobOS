@@ -77,7 +77,7 @@ void isrs_install(){
 
 };
 
-unsigned char *exeption_messages[]={
+unsigned char *exception_messages[]={
 	"Division by Zero",
 	"Debug",
 	"Non Maskable Interrupt",
@@ -113,11 +113,13 @@ unsigned char *exeption_messages[]={
 };
 
 void fault_handler(struct regs *r){
-	if(r->exeption_no < 32){
-		puts(exeption_messages[r->exeption_no]);
-		puts(" Exeption occured... System Halted!\n");
+	
+	if(r->exception_no < 32){
+		puts(exception_messages[r->exception_no]);
+		puts(" Exception occured... System Halted!\n");
+		__asm__ __volatile__ ("cli;hlt");
 		for(;;);
 	};
-	puts("Unhandled exeption! System halted\n");
+	puts("Unhandled exception! System halted\n");
 	for(;;);
 };

@@ -6,7 +6,7 @@ struct regs
 {
     unsigned int gs, fs, es, ds;      /* pushed the segs last */
     unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;  /* pushed by 'pusha' */
-    unsigned int exeption_no, err_code;    /* 'push byte #' and error_codes */
+    unsigned int exception_no, err_code;    /* 'push byte #' and error_codes */
     unsigned int eip, cs, eflags, useresp, ss;   /* pushed by the processor automatically */ 
 };
 ////////////

@@ -4,12 +4,12 @@ CFLAGS=-m32 -c -Wextra -Werror -nostdlib -nostartfiles -nodefaultlibs -fno-built
 LD:=ld
 LDFLAGS=-melf_i386 -T linker.ld -o $@ $^
 
-.PHONY: clean run .c.o
+.PHONY: clean run debug .c.o
 
 all: clean run
 
 clean:
-	@rm ./kernel.bin; rm *.o
+	@rm ./kernel.bin; rm *.o; rm ./harddisk.img
 
 .c.o:
 	$(CC) $(CFLAGS)
@@ -30,3 +30,6 @@ harddisk.img: kernel.bin
 
 run: harddisk.img
 	qemu-system-x86_64 -cpu core2duo -m 256 -monitor stdio -hda $<
+
+debug: harddisk.img
+	qemu-system-i386 -cpu coreduo -m 256 -monitor stdio -S -s

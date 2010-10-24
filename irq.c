@@ -67,12 +67,13 @@ void irq_install(){
 	__asm__ __volatile__ ("sti");
 };
 
-void irq_handler(unsigned long ret_addr,struct regs *r){
-	puts("\nIRQ!\n");
+void irq_handler(struct regs *r){
+//	puts("\nIRQ!\n");
+	putch('.');
 	void (*handler)(struct regs *r);
 	handler=irq_handlers[r->exception_no-32];
 	if(handler) handler(r);
 	if(r->exception_no>=40) outportb(0xA0,0x20);
 	outportb(0x20,0x20);
-	puts("END!\n");
+//	puts("END!\n");
 };

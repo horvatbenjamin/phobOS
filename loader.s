@@ -39,12 +39,12 @@ gdt_set:
 	mov eax, cr0
 	or al,1
 	mov cr0,eax
-;    mov ax, 0x10			; 0x10 is the offset in the GDT to our data segment
-;    mov ds, ax
-;    mov es, ax
-;    mov fs, ax
-;    mov gs, ax
-;    mov ss, ax
+    mov ax, 0x10			; 0x10 is the offset in the GDT to our data segment
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
     jmp 0x08:flush2   ; 0x08 is the offset to our code segment: Far jump!
 flush2:
     ret
@@ -407,18 +407,20 @@ irq_common:
 	mov es,ax
 	mov fs,ax
 	mov gs,ax
-	mov eax,esp
-	push eax
-	mov eax,irq_handler
-	call eax
-	pop eax
-	mov esp,eax	;custom
+;	mov eax,esp
+;	push eax
+	push esp
+;	mov eax,irq_handler
+;	call eax
+	call irq_handler
+	pop esp
+;	mov esp,eax	;custom
 	pop gs
 	pop fs
 	pop es
 	pop ds
 	popa
-;	add esp,8
+	add esp,8
 	iret
 
 ;END: IRQ Handler

@@ -34,4 +34,4 @@ run: harddisk.img
 	qemu-system-x86_64 -cpu core2duo -m 256 -monitor stdio -hda $<
 
 debug: harddisk.img
-	qemu-system-i386 -cpu coreduo -m 256 -monitor stdio -S -s
+	qemu-system-i386 -cpu coreduo -m 256 -monitor stdio -S -s $<

@@ -22,7 +22,7 @@ void kmain( void* mbd, unsigned int magic )
    puts(ptr_txt);
    _IDT_DEBUG_();
    for(;;){
-	   puts(".");
+//	   puts(".");
    };
 //   a/=b;
 } 

@@ -1,6 +1,6 @@
 ## 2010.10.24 ##
 Bugfix: Screen scroller fixed
-Hardware IRQ handler still buggy
+Bugfix: Hardware IRQ handler working :) Yeah!
 
 
 ## 2010.09.29 ##

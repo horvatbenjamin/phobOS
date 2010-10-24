@@ -10,9 +10,11 @@ void scroll(void){
 	unsigned blank= 0x20 |(attrib << 8); //Space character, black background
 	if(csr_y>=25){
 		//after 25 lines we must scroll the screen
-		memcpy(textmemptr,textmemptr+(csr_y-25+1)*80,(25-csr_y-25+1)*80*2);
+//		memcpy(textmemptr,textmemptr+(csr_y-25+1)*80,(25-csr_y-25+1)*80*2);
+		memcpy(textmemptr,textmemptr+80,24*80*2);
 		memsetw(textmemptr+(25-(csr_y-25+1))*80,blank,80);
-		csr_y=25-1;
+//		csr_y=25-1;
+		csr_y=24;
 	};
 };
 

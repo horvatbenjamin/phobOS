@@ -113,7 +113,7 @@ unsigned char *exception_messages[]={
 };
 
 void fault_handler(struct regs *r){
-	
+
 	if(r->exception_no < 32){
 		puts(exception_messages[r->exception_no]);
 		puts(" Exception occured... System Halted!\n");

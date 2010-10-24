@@ -418,7 +418,7 @@ irq_common:
 	pop es
 	pop ds
 	popa
-	add esp,8
+;	add esp,8
 	iret
 
 ;END: IRQ Handler

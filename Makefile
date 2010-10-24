@@ -9,7 +9,9 @@ LDFLAGS=-melf_i386 -T linker.ld -o $@ $^
 all: clean run
 
 clean:
-	@rm ./kernel.bin; rm *.o; rm ./harddisk.img
+	if  test -f ./kernel.bin; then rm ./kernel.bin; fi
+	if test -f ./harddisk.img; then rm ./harddisk.img; fi
+	@rm *.o
 
 .c.o:
 	$(CC) $(CFLAGS)
@@ -17,7 +19,7 @@ clean:
 loader.o:
 	nasm -f elf -o loader.o loader.s
 	
-kernel.bin: loader.o kernel.o system.o screen.o gdt.o idt.o isrs.o
+kernel.bin: loader.o kernel.o system.o screen.o gdt.o idt.o isrs.o irq.o
 	$(LD) $(LDFLAGS)
 
 harddisk.img: kernel.bin

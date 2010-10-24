@@ -69,7 +69,7 @@ void irq_install(){
 
 void irq_handler(struct regs *r){
 //	puts("\nIRQ!\n");
-	putch('.');
+//	putch('.');
 	void (*handler)(struct regs *r);
 	handler=irq_handlers[r->exception_no-32];
 	if(handler) handler(r);

@@ -14,15 +14,21 @@ void kmain( void* mbd, unsigned int magic )
    char txt[]="Hello World!!!\nMasodik sor\nHarmadik...";
    char *ptr_txt=&txt[0];
    int a=1,b=0;;
+   char t='0';
    gdt_install();
    idt_install();
    isrs_install();
    irq_install();
+   timer_install();
    init_video();
    puts(ptr_txt);
    _IDT_DEBUG_();
    for(;;){
-//	   puts(".");
+	   delay(1);
+	   putch(t+a);
+	   putch(' ');
+	   a++;
+	   a%=10;
    };
 //   a/=b;
 } 

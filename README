@@ -1,6 +1,8 @@
 ## 2010.10.24 ##
 Bugfix: Screen scroller fixed
 Bugfix: Hardware IRQ handler working :) Yeah!
+New feature: Timer, and uptime counter
+New feature: delay(int secs) function
 
 
 ## 2010.09.29 ##

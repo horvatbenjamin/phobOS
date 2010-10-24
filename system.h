@@ -29,5 +29,10 @@ void _IDT_DEBUG_();
 		/* isrs.c */
 void isrs_install();
 
+		/* irq.c */
+void irq_set_handler(unsigned char irq,void (*handler)(struct regs *r));
+void irq_remove_handler(unsigned char irq);
+void irq_install();
+
 #endif
 	

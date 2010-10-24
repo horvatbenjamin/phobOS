@@ -33,7 +33,6 @@ void idt_add_entry(unsigned char num, unsigned long base, unsigned short selecto
 void idt_install(){
     idtable_ptr.limit = (sizeof (struct idt_entry) * 256) - 1;
     idtable_ptr.base = (unsigned int)&idtable;
-
     // Initialize memory
 	memset(&idtable, 0, sizeof(struct idt_entry) * 256);
 
@@ -43,7 +42,7 @@ void idt_install(){
 
 void _IDT_DEBUG_(){
 	unsigned int x=0;
-	unsigned char *ptrtmp=(char*)&idtable;
+	unsigned char *ptrtmp=(char*)&idtable[30];
 	unsigned char tmp1,tmp2;
 //	for(x=0;x<1*sizeof(struct idt_entry);x++)puts(*ptrtmp++); //putch((char)*(char*)(idtable+x));
 //	//puts(idtable);

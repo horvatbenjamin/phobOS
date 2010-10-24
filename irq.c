@@ -74,5 +74,5 @@ void irq_handler(struct regs *r){
 	if(handler) handler(r);
 	if(r->exception_no>=40) outportb(0xA0,0x20);
 	outportb(0x20,0x20);
-	putch('.');
+	puts("Shit!");
 };

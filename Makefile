@@ -19,7 +19,7 @@ clean:
 loader.o:
 	nasm -f elf -o loader.o loader.s
 	
-kernel.bin: loader.o kernel.o system.o screen.o gdt.o idt.o isrs.o irq.o timer.o
+kernel.bin: loader.o kernel.o system.o screen.o gdt.o idt.o isrs.o irq.o timer.o keyboard.o
 	$(LD) $(LDFLAGS)
 
 harddisk.img: kernel.bin

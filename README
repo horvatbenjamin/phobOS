@@ -1,3 +1,8 @@
+## 2010.10.26 ##
+Initial keyboard support
+Fixed system idle process: Now using HLT, instead simple endless loop
+
+
 ## 2010.10.24 ##
 Bugfix: Screen scroller fixed
 Bugfix: Hardware IRQ handler working :) Yeah!

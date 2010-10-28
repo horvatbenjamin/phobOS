@@ -62,7 +62,11 @@ void putch(const char c){
     /* Handle a backspace, by moving the cursor back one space */
     if(c == 0x08)
     {
-        if(csr_x != 0) csr_x--;
+        if(csr_x != 0) {
+			csr_x--;
+			putch(' ');
+			csr_x--;
+		};
     }
     /* Handles a tab by incrementing the cursor's x, but only
     *  to a point that will make it divisible by 8 */

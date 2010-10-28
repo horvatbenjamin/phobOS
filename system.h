@@ -38,5 +38,8 @@ void irq_install();
 void timer_imstall();
 void delay(int secs);
 
+		/* keyoard.h */
+void keyboard_install();
+
 #endif
 	

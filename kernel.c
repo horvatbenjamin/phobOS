@@ -20,15 +20,11 @@ void kmain( void* mbd, unsigned int magic )
    isrs_install();
    irq_install();
    timer_install();
+   keyboard_install();
    init_video();
    puts(ptr_txt);
    _IDT_DEBUG_();
-   for(;;){
-	   delay(1);
-	   putch(t+a);
-	   putch(' ');
-	   a++;
-	   a%=10;
+   for(;;){		// SYSTEM IDLE PROCESS
+	   __asm__ __volatile__ ("HLT");
    };
-//   a/=b;
 } 

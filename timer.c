@@ -4,7 +4,7 @@ unsigned long _uptime_ = 0;
 unsigned long _timer_ticks_ = 0;
 #define _HZ_ 100
 
-void irq0_handler(struct regs *r){
+void irq0_handler(struct regs *r){			// IRQ0: SYSTEM TIMER
 	_timer_ticks_++;
 	if(_timer_ticks_%_HZ_ ==0) _uptime_++;
 };

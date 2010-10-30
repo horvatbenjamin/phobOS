@@ -6,5 +6,6 @@ void putch(const char c);
 void puts(char *str);
 void settextcolor(unsigned char forecolor, unsigned char backcolor);
 void init_video();
+void putint(unsigned num);
 
 #endif

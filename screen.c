@@ -2,6 +2,8 @@
 
 //FIXME: OK, atneztem, ertheto a kod...
 
+char buffer[16];		// int -> string
+
 unsigned short *textmemptr;
 int attrib= 0x0F;	//text color 15 - White
 int csr_x=0,csr_y=0;
@@ -134,4 +136,19 @@ void init_video(void)
     textmemptr = (unsigned short *)0xB8000;
     cls();
 }
+
+void putint(unsigned num){
+	unsigned char counter=1;
+	unsigned int tmp=1;
+	while(num!=num%(10*tmp)){
+		counter++;
+		tmp*=10;
+	};
+	buffer[counter]='\0';
+	for(;counter>0;counter--){
+		buffer[counter-1]='0'+num%10;
+		num/=10;
+	};
+	puts(buffer);
+};
 

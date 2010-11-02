@@ -25,6 +25,8 @@ size_t strlen(const char *str){
 	return count;
 };
 
+/////////
+
 /* We will use this later on for reading from the I/O ports to get data
 *  from devices such as the keyboard. We are using what is called
 *  'inline assembly' in these routines to actually do the work */
